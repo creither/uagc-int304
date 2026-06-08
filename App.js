@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import './App.css';
+import "./App.css";
 
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
 import EmployeeForm from "./Components/EmployeeForm";
+import EmployeeList from "./Components/EmployeeList";
+import EmployeeDetail from "./Components/EmployeeDetail";
 
 function App() {
   const [employees, setEmployees] = useState([]);
@@ -18,16 +20,14 @@ function App() {
     }
   }, []);
 
-  // Add a new employee to state
-  const addEmployee = (employee) => {
-    const updatedEmployees = [...employees, employee];
-    setEmployees(updatedEmployees);
-  };
+  // Automatically save employees whenever they change
+  useEffect(() => {
+    localStorage.setItem("employees", JSON.stringify(employees));
+  }, [employees]);
 
-  // Save employees to localStorage
-  const saveData = () => {
-    localStorage.setItem("employees", JSON.stringify(employees, null, 2));
-    alert("Employee data saved to local storage!");
+  // Add a new employee
+  const addEmployee = (employee) => {
+    setEmployees([...employees, employee]);
   };
 
   // Remove employee by index
@@ -52,16 +52,12 @@ function App() {
         <nav>
           <ul>
             <li><Link to="/">Home</Link></li>
+            <li><Link to="/employees">Employee List</Link></li>
+            <li><Link to="/employee-form">Employee Form</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/contact">Contact</Link></li>
-            <li><Link to="/employee-form">Employee Form</Link></li>
           </ul>
         </nav>
-
-        {/* Save Button */}
-        <button onClick={saveData} style={{ marginTop: "10px" }}>
-          Save Employees to Local Storage
-        </button>
 
         {/* Routes */}
         <Routes>
@@ -75,12 +71,24 @@ function App() {
               />
             }
           />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
+
+          <Route
+            path="/employees"
+            element={<EmployeeList employees={employees} />}
+          />
+
+          <Route
+            path="/employees/:id"
+            element={<EmployeeDetail employees={employees} />}
+          />
+
           <Route
             path="/employee-form"
             element={<EmployeeForm addEmployee={addEmployee} />}
           />
+
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
 
       </div>
