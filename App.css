@@ -1,38 +1,119 @@
+/* GENERAL LAYOUT */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f7f7f7;
+  margin: 0;
+  padding: 0;
+}
+
 .App {
-  text-align: center;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* NAVIGATION */
+nav {
+  background-color: #333;
+  padding: 10px;
+  margin-bottom: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav ul {
+  list-style: none;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
   color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.App-link {
-  color: #61dafb;
+nav ul li a:hover {
+  text-decoration: underline;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* EMPLOYEE LIST */
+.employee-list {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.employee-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.employee-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.employee-list li:last-child {
+  border-bottom: none;
+}
+
+.employee-list a {
+  color: #0077cc;
+  font-size: 1.1em;
+  text-decoration: none;
+}
+
+.employee-list a:hover {
+  text-decoration: underline;
+}
+
+/* EMPLOYEE DETAIL */
+.employee-detail {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.employee-detail p {
+  font-size: 1.1em;
+  margin: 8px 0;
+}
+
+.employee-detail a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+.employee-detail a:hover {
+  text-decoration: underline;
+}
+
+/* HOME PAGE EMPLOYEE CARDS */
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  margin-right: 10px;
+  padding: 6px 12px;
+  border: none;
+  background-color: #0077cc;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #005fa3;
+}
+
+input {
+  padding: 6px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
 }

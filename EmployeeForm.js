@@ -20,9 +20,14 @@ class EmployeeForm extends React.Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
-        console.log("Form submitted:", this.state);
 
-        // Reset form fields
+        this.props.addEmployee({
+            name: this.state.name,
+            email: this.state.email,
+            title: this.state.title,
+            department: this.state.department
+        });
+
         this.setState({
             name: '',
             email: '',
